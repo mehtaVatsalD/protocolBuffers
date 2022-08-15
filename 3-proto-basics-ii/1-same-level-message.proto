@@ -1,0 +1,41 @@
+// using proto3 as data format
+syntax = "proto3";
+
+enum EyeColor {
+    UNKNOWN = 0;
+    BLACK = 1;
+    BLUE = 2;
+    BROWN = 3;
+}
+
+/*
+ * Person represents user.
+ */
+message Person {
+    int32 age = 1;
+    string firstName = 2;
+    string lastName = 3;
+    bool isVerified = 4;
+
+    //this is small profile image in .jpg format
+    bytes profileImage = 5;
+
+    //height is in cms
+    float height = 6;
+
+    //weight is in kgs
+    float weight = 7;
+
+    //list of phone numbers that are optional to submit at time of signup
+    repeated string phoneNumbers = 8;
+
+    EyeColor personsEyeColor = 9;
+
+    Date birthDay = 10;
+}
+
+message Date {
+    int32 year = 1;
+    int32 month = 2;
+    int32 day = 3;
+}

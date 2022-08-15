@@ -1,0 +1,50 @@
+// using proto3 as data format
+syntax = "proto3";
+
+import "3-proto-basics-ii/3_1-date_to_import.proto";
+
+enum EyeColor {
+    EYE_COLOR_UNKNOWN = 0;
+    EYE_COLOR_BLACK = 1;
+    EYE_COLOR_BLUE = 2;
+    EYE_COLOR_BROWN = 3;
+}
+
+/*
+ * Person represents user.
+ */
+message Person {
+    int32 age = 1;
+    string first_name = 2;
+    string last_name = 3;
+    bool is_verified = 4;
+
+    //this is small profile image in .jpg format
+    bytes profile_image = 5;
+
+    //height is in cms
+    float height = 6;
+
+    //weight is in kgs
+    float weight = 7;
+
+    //list of phone numbers that are optional to submit at time of signup
+    repeated string phone_numbers = 8;
+
+    EyeColor persons_eye_color = 9;
+
+    Date birth_day = 10;
+
+    // defining nested type address to hold addresses of given person
+    // full name of message will be Person.Address
+    message Address {
+        string address_line1 = 1;
+        string address_line2 = 2;
+        string zip_code = 3;
+        string city = 4;
+        string country = 5;
+    }
+
+    // person can have one or more address which is defined by type defined above
+    repeated Address address = 11;
+}
